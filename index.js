@@ -3,7 +3,7 @@ const { nanoid } = require('nanoid')
 const app = express()
 const port = 3000
 
-const cards = [{ title: 'What is HTML?', author: 'John Doe', id: '123abc' }]
+let cards = [{ title: 'What is HTML?', author: 'John Doe', id: '123abc' }]
 
 app.use(express.json())
 
@@ -17,6 +17,16 @@ app.post('/api/cards', (req, res) => {
 
   cards.push(newCard)
   res.json(newCard)
+})
+
+app.patch('/api/cards/:id', (req, res) => {
+  const { id } = req.params
+  const index = cards.findIndex(card => id === card.id)
+
+  const newCard = { ...cards[index], ...req.body }
+
+  cards = [...cards.slice(0, index), newCard, ...cards.slice(index + 1)]
+  res.send(newCard)
 })
 
 app.listen(port, () => {
