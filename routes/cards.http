@@ -1,0 +1,22 @@
+### GET 
+GET http://localhost:3000/api/cards
+
+### POST 
+POST http://localhost:3000/api/cards
+Content-Type: application/json
+
+{
+    "title": "What is CSS?",
+    "author": "Jane Doe"
+}
+
+### PATCH (update)
+PATCH http://localhost:3000/api/cards/123abc
+Content-Type: application/json
+
+{
+    "title": "Just changing the title"
+}
+
+### DELETE (delete)
+DELETE http://localhost:3000/api/cards/123abc
