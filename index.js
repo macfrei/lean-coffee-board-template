@@ -1,6 +1,9 @@
 const express = require('express')
 const app = express()
 const port = 3000
+const { connectDatabase } = require('./setupMongo')
+
+connectDatabase('mongodb://localhost:27017/lean-coffee')
 
 app.use(express.json())
 
