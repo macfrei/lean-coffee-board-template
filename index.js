@@ -29,6 +29,13 @@ app.patch('/api/cards/:id', (req, res) => {
   res.send(newCard)
 })
 
+app.delete('/api/cards/:id', (req, res) => {
+  const { id } = req.params
+
+  cards = cards.filter(card => card.id !== id)
+  res.send(`Card with id: ${id} was deleted.`)
+})
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
