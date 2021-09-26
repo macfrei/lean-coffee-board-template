@@ -6,17 +6,17 @@ POST http://localhost:3000/api/cards
 Content-Type: application/json
 
 {
-    "title": "What is CSS?",
+    "text": "What is CSS?",
     "author": "Jane Doe"
 }
 
 ### PATCH (update)
-PATCH http://localhost:3000/api/cards/123abc
+PATCH http://localhost:3000/api/cards/6150658c41d0dc56c1a932b0
 Content-Type: application/json
 
 {
-    "title": "Just changing the title"
+    "text": "Just changing the title"
 }
 
 ### DELETE (delete)
-DELETE http://localhost:3000/api/cards/123abc
+DELETE http://localhost:3000/api/cards/6150658c41d0dc56c1a932b0
