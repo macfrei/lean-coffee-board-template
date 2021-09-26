@@ -8,7 +8,7 @@ let cards = [{ title: 'What is HTML?', author: 'John Doe', id: '123abc' }]
 app.use(express.json())
 
 app.get('/api/cards', (req, res) => {
-  res.json(cards)
+  res.status(200).json(cards)
 })
 
 app.post('/api/cards', (req, res) => {
@@ -16,7 +16,7 @@ app.post('/api/cards', (req, res) => {
   const newCard = { ...req.body, id }
 
   cards.push(newCard)
-  res.json(newCard)
+  res.status(200).json(newCard)
 })
 
 app.patch('/api/cards/:id', (req, res) => {
@@ -26,14 +26,14 @@ app.patch('/api/cards/:id', (req, res) => {
   const newCard = { ...cards[index], ...req.body }
 
   cards = [...cards.slice(0, index), newCard, ...cards.slice(index + 1)]
-  res.send(newCard)
+  res.status(200).send(newCard)
 })
 
 app.delete('/api/cards/:id', (req, res) => {
   const { id } = req.params
 
   cards = cards.filter(card => card.id !== id)
-  res.send(`Card with id: ${id} was deleted.`)
+  res.status(200).send(`Card with id: ${id} was deleted.`)
 })
 
 app.listen(port, () => {
